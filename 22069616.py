@@ -1,21 +1,36 @@
+"""
+Created on Wed Jan 10 10:34:53 2024
+
+@author: Malik InamElahi
+@id: 22069616
+"""
+
+# include libraries 
 import pandas as pd
 import matplotlib.pyplot as plt
 
-
+# read for csv files 
 terror_df = pd.read_csv('terrorist-attacks.csv')
 gdp_df = pd.read_csv('gdp.csv')
+# student id and name 
 roll_number = '"22069616"'
 name = '"Malik InamElahi"'
+# countries set in the array which are use for information data
 countries = ['Afghanistan', 'India', 'Pakistan', 'United States', 'Ukraine', 'Japan']
 
+# figure info 
 plt.figure(figsize=(17, 10))
+
 # First subplot
 plt.subplot(2, 2, 1)
+
+# for loop for read the countires data 
 for country in countries:
     country_data = terror_df[terror_df['Entity'] == country]
     country_data_filtered = country_data[country_data['Year'] >= 2000]
     plt.bar(country_data_filtered['Year'], country_data_filtered['Terrorist attacks'], label=f"{country} - Attacks")
 
+# labeling 
 plt.title('Number Of Terrorist Attacks', color='red')
 plt.xlabel('Year')
 plt.ylabel('Number of Attacks')
@@ -89,7 +104,7 @@ plt.legend()
 
 plt.suptitle("TERRORISM AND ITS EFFECTS", fontsize=24)
 
-
+## depicted information about the data 
 plt.figtext(0.05, 0.12, "Terrorism Dashboard Overview",  fontsize=12, fontweight='bold')
 plt.figtext(0.05, 0.1, "This dashboard elaborates on terrorism and its effects, presenting data from 2000 onwards.",   fontsize=10)
 plt.figtext(0.05, 0.08, "Pakistan faced the highest number of terrorist attacks between 2010 to 2015, while Afghanistan saw an increase from 2015 onwards.", fontsize=10)
@@ -101,3 +116,5 @@ plt.figtext(0.80, 0.02, f'ID: {roll_number}\nNAME: {name}', fontsize=12, color='
 plt.tight_layout(rect=[0, 0.14, 1, 1])
 plt.savefig('22069616.png', dpi=300)
 
+### Github repo link
+## https://github.com/MalikInamElahi/Data-Handling-and-visualization-.git
